@@ -1,0 +1,8 @@
+*.pyc
+*~
+/.vscode
+__pycache__
+MyVenv
+db.sqlite3
+root
+.DS_Store

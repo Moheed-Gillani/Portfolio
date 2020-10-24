@@ -1,0 +1,410 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>{% translate 'MoheedGillani' %}</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+    <!-- Favicon
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/img/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/img/logog.png' %}">
+
+    <!-- Stylesheets
+    ================================================== -->
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/responsive.css' %}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif] -->
+    <style>
+        .dropbtn {
+            background-color: #3498DB;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+          }
+          
+          /* Dropdown button on hover & focus */
+          .dropbtn:hover, .dropbtn:focus {
+            background-color: #2980B9;
+          }
+          
+          /* The container <div> - needed to position the dropdown content */
+          .dropdown {
+            position: relative;
+            display: inline-block;
+          }
+          
+          /* Dropdown Content (Hidden by Default) */
+          .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+          }
+          
+          /* Links inside the dropdown */
+          .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+          }
+          
+          /* Change color of dropdown links on hover */
+          .dropdown-content a:hover {background-color: #ddd}
+          
+          /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+          .show {display:block;}
+    </style>
+
+</head>
+<body>
+
+    <header id="masthead" class="site-header" data-anchor-target=".hero" data-top="background: rgba(255,255,255,0); padding: 30px 0; box-shadow: 0px 0px 20px 6px rgba(0, 0, 0, 0);" data-top-bottom="background: rgba(255,255,255,1); padding: 10px 0; box-shadow: 0px 0px 20px 6px rgba(0, 0, 0, 0.2);">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+                <div class="navbar-header page-scroll">
+
+                    <button type="button" class="navbar-toggle collapsed" data-target="#portfolio-perfect-collapse" aria-expanded="false" >
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    
+                    <!-- <a href="#hero" class="site-logo"><img src="{% static 'assets/img/logog.png' %}" alt="logo" style="width: 60px; height:70px;"></a> -->
+                    <div class="dropdown" style="margin-left: 10px; width:30px;">
+                        <button onclick="myFunction()" class="dropbtn">Language</button>
+                        <div id="myDropdown" class="dropdown-content">
+                        {% get_available_languages as languages %}
+                        {% for lang_code, lang_name in languages %}
+                        {% language lang_code %}
+                        <a href="{% url 'index' %}">{{ lang_name }}</a>
+                        {% endlanguage %}
+                        {% endfor %} 
+                            </div>
+                          </div>
+
+                </div><!-- /.navbar-header -->
+
+                <div class="main-menu" id="portfolio-perfect-collapse">
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li class="page-scroll"><a href="#hero">{% translate 'Home' %}</a></li>
+                        <li class="page-scroll"><a href="#about">{% translate 'About'%}</a></li>
+                        <li class="page-scroll"><a href="#service">{% translate 'Service'%}</a></li>
+                        <li class="page-scroll"><a href="#portfolio">{% translate 'Portfolio'%}</a></li>
+                        <li class="page-scroll"><a href="#contact">{% translate 'Contact' %}</a></li>
+                        <div class="dropdown" style="margin-left: 10px; width:30px;">
+                    </ul><!-- /.navbar-nav -->
+
+                </div><!-- /.navbar-collapse -->
+
+            </div>
+        </nav><!-- /.primary-navigation -->
+    </header><!-- /#header -->
+<script>
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+      
+      // Close the dropdown menu if the user clicks outside of it
+      window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+          var dropdowns = document.getElementsByClassName("dropdown-content");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+            }
+          }
+        }
+      }
+</script>
+    <div id="hero" class="hero">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6">
+                {% if email %}
+                <p>Thanks {{ name }} your message has been delivered successfully from your email you will get over reply verysoon.</p>
+                {% endif %}
+            
+                    <h1>{% translate 'Moheed Gillani' %}</h1>
+                    <div class="page-scroll">
+                        <p class="job-title">{% translate 'Django Full Stack Developer' %}</p>
+                        <a href="#contact" class="btn btn-fill ">{% translate 'Hire me' %}</a>
+                        <div class="clearfix visible-xxs"></div>
+                        <a href="#portfolio" class="btn btn-border">{% translate 'Explore more' %}</a>
+                    </div>
+                </div>
+              
+            
+                <div class="col-md-6 text-right">
+                    <img src="{% static 'assets/img/alex-vidal.png' %}" alt="alex-vidal">
+                </div>
+
+            </div>
+        </div>
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section id="about" class="site-section section-about text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <h2>{% translate 'About' %}</h2>
+                        <img src="{% static 'assets/img/lines.svg' %}" class="img-lines" alt="lines">
+                        {% for data in data %}
+                        <p>{{ data.About }}</p>
+                        {% endfor %}
+                        <a href="https://www.fiverr.com/share/pwa2RR" class="btn btn-fill" target="_blank" download>Fiverr profile</a>
+                    </div>
+                </div>
+            </div>
+        </section><!-- /.secton-about -->
+
+        <section class="site-section section-skills">
+            <div class="container">
+                <div class="text-center">
+                    <h3>{% translate 'My Skills'%}</h3>
+                    <img src="{% static 'assets/img/lines.svg' %}" class="img-lines" alt="lines">
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="skill">
+                            <h4>{% translate 'Html/css'%}</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" data-transitiongoal="100"></div><!-- /.progress-bar -->
+                            </div><!-- /.progress -->
+                        </div><!-- /.skill -->
+                        <div class="skill">
+                            <h4>{% translate 'Python' %}</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" data-transitiongoal="75"></div><!-- /.progress-bar -->
+                            </div><!-- /.progress -->
+                        </div><!-- /.skill -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="skill">
+                            <h4>{% translate 'Javascript' %}</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" data-transitiongoal="82"></div><!-- /.progress-bar -->
+                            </div><!-- /.progress -->
+                        </div><!-- /.skill -->
+                        <div class="skill">
+                            <h4>{% translate 'Django' %}</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" data-transitiongoal="66"></div><!-- /.progress-bar -->
+                            </div><!-- /.progress -->
+                        </div><!-- /.skill -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="skill">
+                            <h4>{% translate 'Php' %}</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" data-transitiongoal="97"></div><!-- /.progress-bar -->
+                            </div><!-- /.progress -->
+                        </div><!-- /.skill -->
+                        <div class="skill">
+                            <h4>{% translate 'Angular' %}</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" data-transitiongoal="45"></div><!-- /.progress-bar -->
+                            </div><!-- /.progress -->
+                        </div><!-- /.skill -->
+                    </div>
+                </div>
+            </div>
+        </section><!-- /.secton-skills -->
+
+        <section id="service" class="site-section section-services overlay text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>{% translate 'What i do' %}</h3>
+                        <img src="{% static 'assets/img/lines.svg' %}" class="img-lines" alt="lines">
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="service">
+                            <img src="{% static 'assets/img/front-end.svg' %}" alt="Front End Developer">
+                            <h4>{% translate 'Front-end' %}</h4>
+                            <p>{% translate 'As a javascript developer, I have experience in HTML5 and CSS3 techniques working with jQuery or more advanced javascript MVC frameworks such as angular' %}</p>
+                        </div><!-- /.service -->
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="service">
+                            <img src="{% static 'assets/img/back-end.svg' %}" alt="Back End Developer">
+                            <h4>{% translate 'Back-end' %}</h4>
+                            <p>{% translate 'Utilising python frameworks such as Django or creating bespoke code, I have written services supporting thousands of users, including REST APIs, e-learning applications and more.' %}</p>
+               </div><!-- /.service -->
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="service">
+                            <img src="{% static 'assets/img/consultancy.svg' %}" alt="Coding">
+                            <h4>{% translate 'Consultancy' %}</h4>
+                            <p>{% translate 'As well as providing development services, I can also help you decide strategic roadmaps via consultancy services.' %}</p>
+                        </div><!-- /.service -->
+                    </div>
+                </div>
+            </div>
+        </section><!-- /.secton-services -->
+
+        <section id="portfolio" class="site-section section-portfolio">
+            <div class="container">
+                <div class="text-center">
+                    <h3>{% translate 'My recent Works' %}</h3>
+                    <img src="{% static 'assets/img/lines.svg' %}" class="img-lines" alt="lines">
+                </div>
+                
+                <div class="row">
+                    {% for project in project %}
+                    <div class="col-lg-4">
+                        <div class="portfolio-item">
+                            <img src="{{ project.image.url }}" class="img-res" alt="">
+                            <div class="portfolio-item-info">
+                                <h4>{{ project.title}}</h4>
+                                <a href="#" data-toggle="modal" data-target="#{{ project.identity }}"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                <a href="#"><span class="glyphicon glyphicon-link"></span></a>
+                            </div><!-- /.portfolio-item-info -->
+                        </div><!-- /.portfolio-item -->
+                    </div>
+                    {% endfor %}
+                    </div>
+                   
+                </div>
+            </div>
+        </section><!-- /.secton-portfolio -->
+
+        <section class="site-section section-counters text-center">
+            <div class="container">
+                <div class="row">
+                    {% for data in data %}
+                    <div class="col-sm-4 col-xs-12">
+                        <p class="counter start" data-to="{{ data.years_experience }}" data-speed="2000">0</p>
+                        <h4>{% translate 'Years Experience' %}</h4>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <p class="counter start" data-to="{{ data.project_deliverd }}" data-speed="2000">0</p>       
+                        <h4>{% translate 'Projects Delivered' %}</h4>      
+                    </div>
+                    {% endfor %}
+                    <div class="col-sm-4 col-xs-12">
+                        <p id="infinity" class="counter" data-from="0" data-to="1" data-speed="1000">0</p>
+                        <h4>{% translate 'Seconds on this site!<br>What are you waiting for?' %}</h4>
+                    </div>
+                </div>
+            </div>
+        </section><!-- /.section-counters -->
+
+        <section id="contact" class="site-section section-form text-center">
+            <div class="container">
+
+                <h3>{% translate 'Contact' %}</h3>
+                <img src="{% static 'assets/img/lines.svg' %}" class="img-lines" alt="lines">
+                <form method="POST" action="{% url 'mail' %}">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input type="text" name="name" class="form-control mt-x-0" placeholder="Name" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="email" name="email" class="form-control" placeholder="Email" required>   
+                        </div>
+                        <div class="col-sm-12">
+                            <textarea name="message" id="mesaage" class="form-control" placeholder="Message" required></textarea>
+                        </div>
+                    </div>
+                    <button href="#" class="btn btn-border" type="submit">{% translate 'Hire Me' %} <span class="glyphicon glyphicon-send"></span></button>
+                </form>
+            </div>
+        </section><!-- /.section-form -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-xs-12">
+                    <a class="icon facebook-bg" href="https://www.facebook.com/moheed.gillani.7/"><i class="icon-facebook"></i></a>
+                    <a class="icon linkedin-bg" href="https://www.facebook.com/moheed.gillani.7/"><i class="icon-gplus"></i></a>
+                </div>
+
+                <div class="col-sm-4 col-sm-offset-0 col-xs-6 col-xs-offset-3"><p class="copyright" style="font-size: 15px;">MG.pythoanywhere.com.2020.allrightsreserved</p></div>
+                <div class="col-sm-4 col-xs-3">
+                    <div class="text-right page-scroll">
+                        <a class="icon icon-up-bg" href="#hero"><i class="icon-up"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer><!-- /#footer -->
+
+    <!-- Modals -->
+{% for project in project %}
+    <div id="{{ project.identity }}" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+         
+            <a class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></a>
+            <img class="img-res" src="{{ project.image.url }}" alt="">
+          </div>
+          <div class="modal-body">
+            <h4 class="modal-title">{{   project.title }}</h4>
+            {{ project.description }}
+          </div>
+          <div class="modal-footer">
+            <a href="{{ project.link }}" class="btn btn-fill" target="_blank">Visit Page</a>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+{% endfor %}
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="{% static 'assets/js/skrollr.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-progressbar/0.9.0/bootstrap-progressbar.min.js"></script>
+    <script src="{% static 'assets/js/jquery.countTo.min.js' %}"></script>
+    <script src="{% static 'assets/js/script.js' %}"></script>
+  
+</body>
+</html>
